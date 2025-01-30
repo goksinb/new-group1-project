@@ -4,7 +4,7 @@ import Cross from "./Assets/Cross.svg";
 import Arrow from "./Assets/Arrow.svg";
 import HeartHollow from "./Assets/HeartHollow.svg";
 
-function PopupWindow({movie, onClose}) {
+function PopupWindow({ movie, onClose, onAddToWatchlist }) {
   if (!movie) return null;
 
   const type =
@@ -12,34 +12,41 @@ function PopupWindow({movie, onClose}) {
       ? "TV Series"
       : movie.type.charAt(0).toUpperCase() + movie.type.slice(1);
 
+  const handleAddToWatchlist = () => {
+    onAddToWatchlist(movie);
+    onClose(); // Close the popup after adding to watchlist
+  };
+
   return (
     <div className="popup-overlay" onClick={onClose}>
       <div className="popup-container" onClick={(e) => e.stopPropagation()}>
-        {/* Header Section */}
         <div className="up-popup">
-          <div className="popup-title">
-            <h2>{movie.name}</h2>
+          <div className="up-popup-row">
+            <div className="popup-title">
+              <h2>{movie.name}</h2>
+            </div>
+            <div className="close-btn-container">
+              <button className="close-btn" onClick={onClose}>
+                <img src={Cross} alt="Close" width="24" height="24" />
+              </button>
+            </div>
           </div>
-          <div className="close-btn-container">
-            <button className="close-btn" onClick={onClose}>
-              <img src={Cross} alt="Close" width="24" height="24" />
-            </button>
-          </div>
-          <div className="movie-type">
-            <p>{type}</p>
-          </div>
-          <div className="arrow">
-            <a
-              href={`https://www.netflix.com`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={Arrow} alt="Go to Netflix" width="24" height="24" />
-            </a>
+          <div className="up-popup-row">
+            <div className="movie-type">
+              <p>{type}</p>
+            </div>
+            <div className="arrow">
+              <a
+                href={`https://www.netflix.com`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={Arrow} alt="Go to Netflix" width="24" height="24" />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Footer Section */}
         <div className="down-popup">
           <div className="left-side">
             <p>Hi</p>
@@ -50,7 +57,8 @@ function PopupWindow({movie, onClose}) {
               alt="Favorite"
               width="24"
               height="24"
-              style={{cursor: "pointer"}}
+              style={{ cursor: "pointer" }}
+              onClick={handleAddToWatchlist}
             />
           </div>
         </div>
