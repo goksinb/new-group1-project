@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.toggle-button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.search-button {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.watchlist-button {
+  background-color: #22c55e;
+  color: white;
+}

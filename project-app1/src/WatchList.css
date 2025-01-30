@@ -1,0 +1,31 @@
+.watchlist-container {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.watchlist-item {
+  border-bottom: 1px solid #555;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.watchlist-item:last-child {
+  border-bottom: none;
+}
+
+.remove-button {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #f40612;
+}
