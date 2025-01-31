@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useMovieContext } from "./MovieContext";
 import { fetchMovie } from "./FetchMovie";
 import PopupWindow from "./PopupWindow";
+import Arrow from "./Assets/Arrow.svg";
+import './SearchList.css';
 import "./App.css";
 
 const SearchList = () => {
@@ -52,16 +54,20 @@ const SearchList = () => {
 
   return (
     <div className="searchlist-container">
-      <header>
+    <header>
+      <div className="watchlist-text">
+        <h3>WATCHLIST</h3>
         <button
           className="header-watchlist-btn"
           onClick={() => navigate("/watchlist")}
           aria-label="View Watchlist"
         >
-          Watchlist
+          <img src={Arrow} alt="Go to Watchlist" width="24" height="24" />
         </button>
-      </header>
-      <h4>Stream Movies Now</h4>
+      </div>
+    </header>
+    <div className="center-content">
+      <h4>STREAM MOVIES NOW</h4>
       <h1>QUEUEFLIX</h1>
       <h2 className="title">FIND YOUR FLICK</h2>
       <div className="search-container">
@@ -74,14 +80,18 @@ const SearchList = () => {
           className="search-input"
           aria-label="Search for a movie or series"
         />
+        <button
+          onClick={handleButtonClick}
+          className="search-button"
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            "Searching..."
+          ) : (
+            <img src={Arrow} alt="Arrow" width="24" height="24" />
+          )}
+        </button>
       </div>
-      <button
-        onClick={handleButtonClick}
-        className="search-button"
-        disabled={isLoading}
-      >
-        {isLoading ? "Searching..." : "Search"}
-      </button>
       {error && (
         <p className="error-message" role="alert">
           {error}
@@ -96,9 +106,9 @@ const SearchList = () => {
               <h3
                 className="movie-title"
                 onClick={() => setSelectedMovie(movie)}
-                style={{ cursor: "pointer", textDecoration: "underline" }}
+                style={{ cursor: "pointer" }}
               >
-                {movie.name} ({movie.year})
+                {movie.name}
               </h3>
             </div>
           ))}
@@ -112,7 +122,8 @@ const SearchList = () => {
         />
       )}
     </div>
-  );
+  </div>
+);
 };
 
 export default SearchList;

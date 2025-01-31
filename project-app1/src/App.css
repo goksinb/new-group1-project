@@ -1,11 +1,10 @@
 @font-face {
-  font-family: 'SuperRichExpanded';
-  src: url('./Assets/fonts/SuperRichExpanded_PERSONAL_USE_ONLY - Stretch.otf') format('opentype');
+  font-family: "SuperRichExpanded";
+  src: url("./Assets/fonts/SuperRichExpanded_PERSONAL_USE_ONLY - Stretch.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
 }
-
-
 
 :root {
   --background-color: #000000;
@@ -20,11 +19,10 @@
 
 body {
   margin: 0;
-  font-family: 'Open Sans', 'SuperRichExpanded', sans-serif;
+  font-family: "Open Sans", "SuperRichExpanded", sans-serif;
   background-color: var(--background-color);
   color: var(--white-color);
 }
-
 
 .App {
   text-align: center;
@@ -80,3 +78,4 @@ body {
   background-color: #22c55e;
   color: white;
 }
+
