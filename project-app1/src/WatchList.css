@@ -1,16 +1,52 @@
+@font-face {
+  font-family: 'SuperRichExpanded';
+  src: url('./Assets/fonts/SuperRichExpanded_PERSONAL_USE_ONLY - Stretch.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.title-section{
+  display: flex;
+  width: 150px;
+  flex-direction: row;
+  height: 200px;
+  justify-content: space-between;
+
+}
+
+.title-section button{
+  font-size: 1rem;
+  align-self: flex-start;
+
+}
+.watchlist-title {
+  font-family: 'SuperRichExpanded', Arial, sans-serif !important;
+}
+
 .watchlist-container {
   background-color: #333;
   color: white;
   padding: 20px;
   border-radius: 10px;
+
+
 }
 
 .watchlist-item {
-  border-bottom: 1px solid #555;
+  border: 1.9px solid rgba(255, 255, 255, 0.512);
+  border-radius: 15px;
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  width: 200px;
+  background-color: black;
+}
+
+.watchlist-item h2{
+  text-align: left;
+  font-size: 1.9rem;
 }
 
 .watchlist-item:last-child {
@@ -18,14 +54,54 @@
 }
 
 .remove-button {
-  background-color: #e50914;
+  all: unset;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 5em;
+  
 }
 
 .remove-button:hover {
-  background-color: #f40612;
+  font-size: larger;
+}
+
+
+ul {
+  display: flex;
+  gap: 2rem;
+}
+
+.edit-section{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+}
+
+.edit-section button {
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  align-items: top;
+  fill: white;
+}
+
+p {
+  text-transform: uppercase;
+}
+
+
+.streaming-section{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  width: 100%;
+  padding: 5%;
+  
+}
+
+button {
+  all: unset;
 }

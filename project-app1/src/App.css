@@ -20,7 +20,7 @@
 
 body {
   margin: 0;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', 'SuperRichExpanded', sans-serif;
   background-color: var(--background-color);
   color: var(--white-color);
 }
