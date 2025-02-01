@@ -4,7 +4,7 @@ import { useMovieContext } from "./MovieContext";
 import { fetchMovie } from "./FetchMovie";
 import PopupWindow from "./PopupWindow";
 import Arrow from "./Assets/Arrow.svg";
-import './SearchList.css';
+import "./SearchList.css";
 import "./App.css";
 
 const SearchList = () => {
@@ -54,76 +54,75 @@ const SearchList = () => {
 
   return (
     <div className="searchlist-container">
-    <header>
-      <div className="watchlist-text">
-        <h3>WATCHLIST</h3>
-        <button
-          className="header-watchlist-btn"
-          onClick={() => navigate("/watchlist")}
-          aria-label="View Watchlist"
-        >
-          <img src={Arrow} alt="Go to Watchlist" width="24" height="24" />
-        </button>
-      </div>
-    </header>
-    <div className="center-content">
-      <h4>STREAM MOVIES NOW</h4>
-      <h1>QUEUEFLIX</h1>
-      <h2 className="title">FIND YOUR FLICK</h2>
-      <div className="search-container">
-        <input
-          id="movie-search"
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for a movie or series"
-          className="search-input"
-          aria-label="Search for a movie or series"
-        />
-        <button
-          onClick={handleButtonClick}
-          className="search-button"
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            "Searching..."
-          ) : (
-            <img src={Arrow} alt="Arrow" width="24" height="24" />
-          )}
-        </button>
-      </div>
-      {error && (
-        <p className="error-message" role="alert">
-          {error}
-        </p>
-      )}
-      {notFound ? (
-        <p className="not-found">No results found</p>
-      ) : (
-        <div className="results-grid">
-          {results.map((movie) => (
-            <div key={movie.id} className="result-card">
-              <h3
-                className="movie-title"
-                onClick={() => setSelectedMovie(movie)}
-                style={{ cursor: "pointer" }}
-              >
-                {movie.name}
-              </h3>
-            </div>
-          ))}
+      <header>
+        <div className="watchlist-text">
+          <h3>WATCHLIST</h3>
+          <button
+            className="header-watchlist-btn"
+            onClick={() => navigate("/watchlist")}
+            aria-label="View Watchlist"
+          >
+            <img src={Arrow} alt="Go to Watchlist" width="24" height="24" />
+          </button>
         </div>
-      )}
-      {selectedMovie && (
-        <PopupWindow
-          movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
-          onAddToWatchlist={handleAddToWatchlist}
-        />
-      )}
+      </header>
+      <div className="center-content">
+        <h4>STREAM MOVIES NOW</h4>
+        <h1>QUEUEFLIX</h1>
+        <h2 className="title">FIND YOUR FLICK</h2>
+        <div className="search-container">
+          <div className="search-bar">
+            <input
+              id="movie-search"
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search for a movie or series"
+              className="search-input"
+              aria-label="Search for a movie or series"
+            />
+            <button
+              onClick={handleButtonClick}
+              className="search-button"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                "Searching..."
+              ) : (
+                <img src={Arrow} alt="Arrow" width="24" height="24" />
+              )}
+            </button>
+          </div>
+          <div className="results-grid">
+            {results.map((movie) => (
+              <div key={movie.id} className="result-card">
+                <h3
+                  className="movie-title"
+                  onClick={() => setSelectedMovie(movie)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {movie.name}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+        {error && (
+          <p className="error-message" role="alert">
+            {error}
+          </p>
+        )}
+        {notFound ? <p className="not-found">No results found</p> : null}
+        {selectedMovie && (
+          <PopupWindow
+            movie={selectedMovie}
+            onClose={() => setSelectedMovie(null)}
+            onAddToWatchlist={handleAddToWatchlist}
+          />
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default SearchList;
