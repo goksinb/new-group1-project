@@ -63,37 +63,39 @@ function WatchList() {
         <ul aria-labelledby="watchlist-title">
           {watchlist.map((movie) => (
             <li key={movie.id} className="watchlist-item">
-              <div className="title-section">
-                {editingId === movie.id ? (
-                  <input
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                    onBlur={() => handleSave(movie)}
-                    onKeyPress={(e) => e.key === "Enter" && handleSave(movie)}
-                    aria-label={`Edit title for ${movie.name}`}
-                  />
-                ) : (
-                  <h2>{movie.name}</h2>
-                )}
-                <button onClick={() => removeFromWatchlist(movie.id)} className="remove-button" aria-label={`Remove ${movie.name} from watchlist`}>
-                  <img src={CrossIcon} alt="Cross" width={20} height={20} />
-                </button>
-              </div>
-              <div className="edit-section">
-                <p>
-                  {movie.type} ({movie.year})
-                </p>
-                <button onClick={() => handleEdit(movie)} aria-label={`Edit ${movie.name}`}>
-                  <img src={EditIcon} alt="Edit" width={20} height={20} />
-                </button>
+              <div className="movie-info-section">
+                <div className="title-section">
+                  {editingId === movie.id ? (
+                    <input
+                      value={editedTitle}
+                      onChange={(e) => setEditedTitle(e.target.value)}
+                      onBlur={() => handleSave(movie)}
+                      onKeyPress={(e) => e.key === "Enter" && handleSave(movie)}
+                      aria-label={`Edit title for ${movie.name}`}
+                    />
+                  ) : (
+                    <h4>{movie.name}</h4>
+                  )}
+                  <button onClick={() => removeFromWatchlist(movie.id)} className="remove-button" aria-label={`Remove ${movie.name} from watchlist`}>
+                    <img src={CrossIcon} alt="Cross" width={20} height={20} />
+                  </button>
+                </div>
+                <div className="edit-section">
+                  <p>
+                    {movie.type} ({movie.year})
+                  </p>
+                  <button onClick={() => handleEdit(movie)} aria-label={`Edit ${movie.name}`}>
+                    <img src={EditIcon} alt="Edit" width={20} height={20} />
+                  </button>
+                </div>
               </div>
               {streamingLinks[movie.id] && streamingLinks[movie.id].length > 0 && (
-                                <div className="streaming-section">
-                                <p>Stream Now</p>
-                                <button onClick={() => window.open(streamingLinks[movie.id][0].web_url, '_blank')} className="stream-button">
-                                  <img src={ArrowIcon} alt="Stream" width={20} height={20} />
-                                </button>
-                              </div>
+                <div className="streaming-section">
+                  <p>Stream Now</p>
+                  <button onClick={() => window.open(streamingLinks[movie.id][0].web_url, '_blank')} className="stream-button">
+                    <img src={ArrowIcon} alt="Stream" width={20} height={20} />
+                  </button>
+                </div>
               )}
             </li>
           ))}

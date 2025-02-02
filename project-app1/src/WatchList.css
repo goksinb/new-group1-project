@@ -17,14 +17,12 @@
 .title-section button{
   font-size: 1rem;
   align-self: flex-start;
-
 }
 .watchlist-title {
   font-family: 'SuperRichExpanded', Arial, sans-serif !important;
 }
 
 .watchlist-container {
-  background-color: #333;
   color: white;
   padding: 20px;
   border-radius: 10px;
@@ -33,20 +31,18 @@
 }
 
 .watchlist-item {
-  border: 1.9px solid rgba(255, 255, 255, 0.512);
-  border-radius: 15px;
+  gap: 5px;
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
   width: 200px;
-  background-color: black;
 }
 
-.watchlist-item h2{
+.watchlist-item h4{
   text-align: left;
-  font-size: 1.9rem;
+  font-size: 2rem;
 }
 
 .watchlist-item:last-child {
@@ -104,4 +100,19 @@ p {
 
 button {
   all: unset;
+}
+
+.movie-info-section{
+  border: 1.9px solid rgba(255, 255, 255, 0.512);
+  border-radius: 15px;
+  background-color: black;
+  padding: 5px;
+
+}
+
+.streaming-section{
+  border: 1.9px solid rgba(255, 255, 255, 0.512);
+  border-radius: 15px;
+  background-color: black;
+  padding: 5px;
 }
