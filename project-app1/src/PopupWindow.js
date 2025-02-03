@@ -17,23 +17,31 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
     onClose(); // Close the popup after adding to watchlist
   };
 
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "...";
+  };
+
   return (
     <div className="popup-overlay" onClick={onClose}>
       <div className="popup-container" onClick={(e) => e.stopPropagation()}>
         <div className="up-popup">
           <div className="up-popup-row">
             <div className="popup-title">
-              <h2>{movie.name}</h2>
+              <h2 className="popup-name" title={movie.name}>
+                {truncateText(movie.name, 20)}
+              </h2>
+              <p className="popup-type">{type}</p>
             </div>
             <div className="close-btn-container">
               <button className="close-btn" onClick={onClose}>
-                <img src={Cross} alt="Close" width="24" height="24" />
+                <img src={Cross} alt="Close" width="20" height="20" />
               </button>
             </div>
           </div>
           <div className="up-popup-row">
-            <div className="movie-type">
-              <p>{type}</p>
+            <div className="stream">
+              <p>Stream now</p>
             </div>
             <div className="arrow">
               <a
@@ -48,10 +56,10 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
         </div>
 
         <div className="down-popup">
-          <div className="left-side">
-            <p>Hi</p>
+          <div className="watchlist">
+            <p className="Watchlist-text">Add to watchlist</p>
           </div>
-          <div className="right-side">
+          <div className="watchlist-heart">
             <img
               src={HeartHollow}
               alt="Favorite"
