@@ -16,6 +16,15 @@ function WatchList() {
 
   const navigate = useNavigate();
 
+  const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.slice(0, maxLength) + "...";
+  };
+
+  const formatType = (type) => {
+    return type === "TV Series" ? "TV Series" : "Movie";
+  };
+
   const handleEdit = (movie) => {
     setEditingId(movie.id);
     setEditedTitle(movie.name);
@@ -35,7 +44,7 @@ function WatchList() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      return data.length > 0 ? [data[0]] : []; // Only take the first option
+      return data.length > 0 ? [data[0]] : [];
     } catch (error) {
       console.error("Error fetching streaming options:", error);
       return [];
@@ -53,10 +62,19 @@ function WatchList() {
 
   return (
     <div className="watchlist-container">
+      {/* NEW: Added a wrapper div above My Watchlist */}
+      <div className="queueflix-header">
+        <h2>QUEUEFLIX</h2>
+        <button onClick={() => navigate("/")} className="back-button" aria-label="Back to Search">
+          HOME
+        </button>
+      </div>
+
+      {/* NEW: Added "STREAM MOVIES NOW" heading */}
+      <h4 className="stream-movies-now">STREAM MOVIES NOW</h4>
+
       <h2 id="watchlist-title">My Watchlist</h2>
-      <button onClick={() => navigate("/")} className="back-button" aria-label="Back to Search">
-        Back to Search
-      </button>
+
       {watchlist.length === 0 ? (
         <p>Your watchlist is empty.</p>
       ) : (
@@ -74,16 +92,14 @@ function WatchList() {
                       aria-label={`Edit title for ${movie.name}`}
                     />
                   ) : (
-                    <h4>{movie.name}</h4>
+                    <h4 title={movie.name}>{truncateText(movie.name, 20)}</h4>
                   )}
                   <button onClick={() => removeFromWatchlist(movie.id)} className="remove-button" aria-label={`Remove ${movie.name} from watchlist`}>
                     <img src={CrossIcon} alt="Cross" width={20} height={20} />
                   </button>
                 </div>
                 <div className="edit-section">
-                  <p>
-                    {movie.type} ({movie.year})
-                  </p>
+                  <p>{formatType(movie.type)}</p>
                   <button onClick={() => handleEdit(movie)} aria-label={`Edit ${movie.name}`}>
                     <img src={EditIcon} alt="Edit" width={20} height={20} />
                   </button>
