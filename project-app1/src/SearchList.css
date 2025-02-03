@@ -66,6 +66,7 @@ h3 {
   display: flex;
   align-items: center;
   width: 100%;
+  gap: 10px;
 }
 
 .search-input {
@@ -201,7 +202,7 @@ h4 {
   .search-button {
     padding: 8px;
     width: auto;
-    margin-left: 0; 
+    margin-left: 0;
   }
 
   .results-grid {
