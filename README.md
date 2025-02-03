@@ -6,13 +6,13 @@ Find out where to stream your favorite movies and TV shows
 
 ## **About the Project**
 
-In this group project, we created a platform where you can search for movies and TV shows, add them to your favorites list, and get information on where to stream them.
+In this group project, we created a platform where you can search for movies and TV shows, add them to your favorites list, edit, and get information on where to stream them.
 
 ## **Features**
 
 ✅ **Search for Movies & TV Shows** – Find what you want to watch.
 
-✅ **Get Streaming Links** – Click an arrow to go directly to the streaming platform.
+✅ **Get Streaming Links** – Click the arrow directly to the streaming platform.
 
 ✅ **View Details** – See the title and release year before watching.
 
