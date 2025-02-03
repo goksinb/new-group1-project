@@ -50,6 +50,10 @@ h3 {
   width: 100%;
   font-family: "SuperRichExpanded", sans-serif;
 }
+.title, h2 {
+  font-size: 3rem;
+  font-family: "SuperRichExpanded", sans-serif;
+}
 
 /* Search-container and input */
 .search-container {
@@ -116,6 +120,7 @@ h3 {
   border: 1px solid gray;
   border-radius: 10px;
   font-family: Helvetica, sans-serif;
+  background-color: black;
 }
 
 .movie-title {
@@ -167,6 +172,10 @@ h4 {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  .watchlist-text {
+    justify-content: center;
+  }
+
   .search-bar {
     flex-direction: row;
     align-items: center;
@@ -178,19 +187,26 @@ h4 {
   }
 
   .results-grid {
-    max-width: 100%;
+    width: 95%; 
+    max-width: none; 
+    margin-left: 0; 
+    padding: 5px; 
+    height: auto; 
   }
 
   .center-content h1 {
     font-size: 2rem;
+    
   }
 
   .center-content h2 {
     font-size: 1.5rem;
+    
   }
 
   .center-content h4 {
     font-size: 1.2rem;
+    
   }
 }
 
@@ -207,7 +223,11 @@ h4 {
   }
 
   .results-grid {
-    padding: 8px;
+    width: 82%; 
+    margin-left: 0; 
+    padding: 5px; 
+    height: 250px;
+   align-self: flex-start;
   }
 
   .movie-title {
@@ -225,12 +245,11 @@ h4 {
   .center-content h4 {
     font-size: 1rem;
   }
-  .watchlist-text {
-    justify-content: center;
-  }
+  
 
   .watchlist-text,
   h3 {
     font-size: 1.2rem;
   }
 }
+
