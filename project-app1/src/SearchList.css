@@ -50,7 +50,8 @@ h3 {
   width: 100%;
   font-family: "SuperRichExpanded", sans-serif;
 }
-.title, h2 {
+.title,
+h2 {
   font-size: 3rem;
   font-family: "SuperRichExpanded", sans-serif;
 }
@@ -152,22 +153,23 @@ h4 {
   margin-bottom: 5px;
 }
 
-.not-found,
 .movie-title {
   font-family: Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 1.5rem;
 }
 
 .error-message {
-  color: red;
-  font-size: 1rem;
+  color: white;
+  font-size: 1.5rem;
   margin-top: 10px;
+  font-family: Helvetica, sans-serif;
 }
 
 .not-found {
   font-size: 1.5rem;
   margin-top: 10px;
-  color: gray;
+  color: white;
+  font-family: Helvetica, sans-serif;
 }
 
 /* Responsive styles */
@@ -187,26 +189,23 @@ h4 {
   }
 
   .results-grid {
-    width: 95%; 
-    max-width: none; 
-    margin-left: 0; 
-    padding: 5px; 
-    height: auto; 
+    width: 95%;
+    max-width: none;
+    margin-left: 0;
+    padding: 5px;
+    height: auto;
   }
 
   .center-content h1 {
     font-size: 2rem;
-    
   }
 
   .center-content h2 {
     font-size: 1.5rem;
-    
   }
 
   .center-content h4 {
     font-size: 1.2rem;
-    
   }
 }
 
@@ -223,11 +222,11 @@ h4 {
   }
 
   .results-grid {
-    width: 82%; 
-    margin-left: 0; 
-    padding: 5px; 
+    width: 82%;
+    margin-left: 0;
+    padding: 5px;
     height: 250px;
-   align-self: flex-start;
+    align-self: flex-start;
   }
 
   .movie-title {
@@ -245,11 +244,9 @@ h4 {
   .center-content h4 {
     font-size: 1rem;
   }
-  
 
   .watchlist-text,
   h3 {
     font-size: 1.2rem;
   }
 }
-
