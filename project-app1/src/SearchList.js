@@ -15,6 +15,7 @@ const SearchList = () => {
   const [selectedMovie, setSelectedMovie] = useState(null); // Stores the currently selected movie for the popup
   const [isLoading, setIsLoading] = useState(false); // Indicates if a search is in progress
   const [error, setError] = useState(null); // Stores any error messages
+  const [hasSearched, setHasSearched] = useState(false); // Indicates if a search has been performed
 
   // Access the addToWatchlist function from the MovieContext
   const { addToWatchlist } = useMovieContext();
@@ -30,6 +31,7 @@ const SearchList = () => {
 
     setIsLoading(true);
     setError(null);
+    setHasSearched(true);
 
     try {
       const movieResults = await fetchMovie(query);
@@ -86,33 +88,44 @@ const SearchList = () => {
               className="search-button"
               disabled={isLoading}
             >
-              {isLoading ? (
-                "Searching..."
-              ) : (
-                <img src={Arrow} alt="Arrow" width="24" height="24" />
-              )}
+              <img src={Arrow} alt="Arrow" width="24" height="24" />
             </button>
           </div>
-          <div className="results-grid">
-            {results.map((movie) => (
-              <div key={movie.id} className="result-card">
-                <h3
-                  className="movie-title"
-                  onClick={() => setSelectedMovie(movie)}
-                  style={{ cursor: "pointer" }}
-                >
-                  {movie.name}
-                </h3>
-              </div>
-            ))}
-          </div>
+          
+          {/* Display error message */}
+          {error && (
+            <p className="error-message" role="alert">
+              {error}
+            </p>
+          )}
+
+          {/* Display loading message */}
+          {isLoading && (
+            <p className="loading-message" role="alert">
+              Searching...
+            </p>
+          )}
+
+          {/* Results and error message */}
+          {hasSearched && (
+            <div className="results-grid">
+              {results.map((movie) => (
+                <div key={movie.id} className="result-card">
+                  <h3
+                    className="movie-title"
+                    onClick={() => setSelectedMovie(movie)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {movie.name}
+                  </h3>
+                </div>
+              ))}
+              {notFound && <p className="not-found">No results found</p>}
+            </div>
+          )}
         </div>
-        {error && (
-          <p className="error-message" role="alert">
-            {error}
-          </p>
-        )}
-        {notFound ? <p className="not-found">No results found</p> : null}
+  
+        {/* PopUp for chosen movie */}
         {selectedMovie && (
           <PopupWindow
             movie={selectedMovie}
@@ -126,3 +139,4 @@ const SearchList = () => {
 };
 
 export default SearchList;
+  
