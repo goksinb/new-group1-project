@@ -4,19 +4,23 @@ import Cross from "./Assets/Cross.svg";
 import Arrow from "./Assets/Arrow.svg";
 import HeartHollow from "./Assets/HeartHollow.svg";
 
+//This function shows the popupwindows component for displaying the movie details.
 function PopupWindow({ movie, onClose, onAddToWatchlist }) {
   if (!movie) return null;
 
+  //In here I determine the type of content (TV Series or Capitalize first letter of the type data.)
   const type =
     movie.type === "tv_series"
       ? "TV Series"
       : movie.type.charAt(0).toUpperCase() + movie.type.slice(1);
 
+  //This handler is for adding the movie to the watchlist and also it closes the popup after adding to watchlist, the popup gives you the opportunity to add more.
   const handleAddToWatchlist = () => {
     onAddToWatchlist(movie);
-    onClose(); // Close the popup after adding to watchlist
+    onClose();
   };
 
+  //This function is for taking care of the title of the movie in the popupwindow that it should not exceeds a certain length of the characters.
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) return text;
     return text.slice(0, maxLength) + "...";
@@ -28,6 +32,7 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
         <div className="up-popup">
           <div className="up-popup-row">
             <div className="popup-title">
+              {/* It is connected with the truncateText function and it stops when the characters reache 20. */}
               <h2 className="popup-name" title={movie.name}>
                 {truncateText(movie.name, 20)}
               </h2>
@@ -43,6 +48,7 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
             <div className="stream">
               <p>Stream now</p>
             </div>
+            {/* Here, I have connected to the NetFlix website */}
             <div className="arrow">
               <a
                 href={`https://www.netflix.com`}

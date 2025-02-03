@@ -1,5 +1,5 @@
 export const fetchMovie = async (query) => {
-  const apiKey = "mPujWiU3zCgWk5S7Gt0nzpmYPbJaMEIRyFdMdB1n";
+  const apiKey = "pdUII47F5C3IAAvK6tjYcg2EzkWTICjXO7Jtsxhq";
   try {
     const response = await fetch(
       `https://api.watchmode.com/v1/autocomplete-search/?apiKey=${apiKey}&search_value=${encodeURIComponent(

@@ -91,7 +91,7 @@ const SearchList = () => {
               <img src={Arrow} alt="Arrow" width="24" height="24" />
             </button>
           </div>
-          
+
           {/* Display error message */}
           {error && (
             <p className="error-message" role="alert">
@@ -124,7 +124,7 @@ const SearchList = () => {
             </div>
           )}
         </div>
-  
+
         {/* PopUp for chosen movie */}
         {selectedMovie && (
           <PopupWindow
@@ -139,4 +139,3 @@ const SearchList = () => {
 };
 
 export default SearchList;
-  
