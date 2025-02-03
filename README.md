@@ -58,6 +58,8 @@ This is where all your saved movies and series will be stored.
 
 ### 🚀 **Happy Watching!**
 
+Contributors & Contributions
+
 ### **Fatou**
 
 - 
