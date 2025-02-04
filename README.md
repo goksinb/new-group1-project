@@ -94,3 +94,20 @@ Design:
 Using CSS, I crafted a visually appealing and design for the popup window. This ensures that the component looks great and functions well across various device sizes and screen resolutions.
 
 ### **Mohamed**
+
+Designed the webpage on figma, chosed font and design elements-
+
+Created the global stylesheet for the project
+
+Created SVG:s and background through illustrator for the project
+
+Worked on the watchlist page, created the layout with react
+
+Worked on the watchlist.js page right functions and structure to align with the design
+
+Fetched the Api to pull streaming services and display only the top version of the streaming service.
+
+created the css for the watchlist page and made it responsive.
+
+
+
