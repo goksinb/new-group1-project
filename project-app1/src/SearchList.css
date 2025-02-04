@@ -124,35 +124,30 @@ h2 {
   background-color: black;
 }
 
-.results-grid, h3 {
+.results-grid,
+h3 {
   text-align: start;
-  display: inline-block; 
- 
 }
 
 .movie-title {
   width: 100%;
   padding: 0 0 10px 0;
-  border-bottom: 3px solid white;
+  border-bottom: 1px solid white;
 }
 
 h1 {
-  display: flex;
-  align-items: start;
   font-family: "SuperRichExpanded", sans-serif;
   font-size: 3rem;
   margin-bottom: 50px;
 }
 
 h2 {
-  display: grid;
   align-items: center;
   font-family: "SuperRichExpanded", sans-serif;
   font-size: 3rem;
 }
 .search-container,
 h4 {
-  display: flex;
   align-items: center;
   font-family: Helvetica, sans-serif;
   font-size: 1.5rem;
@@ -167,8 +162,11 @@ h4 {
 .error-message {
   color: white;
   font-size: 1.5rem;
-  margin-top: 10px;
+  margin-top: 5px;
   font-family: Helvetica, sans-serif;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .not-found {
@@ -201,7 +199,7 @@ h4 {
     height: 250px;
     align-self: flex-start;
   }
- 
+
   .center-content h1 {
     font-size: 2rem;
   }
@@ -211,7 +209,11 @@ h4 {
   }
 
   .center-content h4 {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+  .error-message,
+  p {
+    font-size: 1rem;
   }
 }
 
