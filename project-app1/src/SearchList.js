@@ -75,21 +75,27 @@ const SearchList = () => {
         <div className="search-container">
           <div className="search-bar">
             <input
-              id="movie-search"
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for a movie or series"
-              className="search-input"
-              aria-label="Search for a movie or series"
-            />
-            <button
-              onClick={handleButtonClick}
-              className="search-button"
-              disabled={isLoading}
-            >
-              <img src={Arrow} alt="Arrow" width="24" height="24" />
-            </button>
+  id="movie-search"
+  type="text"
+  value={query}
+  onChange={(e) => setQuery(e.target.value)}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      handleButtonClick(); // For users to be able to click on enter also instead of the button.
+    }
+  }}
+  placeholder="Search for a movie or series"
+  className="search-input"
+  aria-label="Search for a movie or series"
+/>
+
+<button
+  onClick={handleButtonClick}
+  className="search-button"
+  disabled={isLoading}
+>
+  <img src={Arrow} alt="Arrow" width="24" height="24" />
+</button>
           </div>
 
           {/* Display error message */}
