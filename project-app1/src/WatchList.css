@@ -18,40 +18,89 @@ h2{
 .title-section{
   display: flex;
   flex-direction: row;
-
   justify-content: space-between;
 
 }
+
+.back-button{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+font-size: 1.6rem;
+font-weight: bold;
+
+}
+
 
 .title-section button{
   font-size: 1rem;
   align-self: flex-start;
 }
-.watchlist-title {
-  font-family: 'SuperRichExpanded', Arial, sans-serif !important;
+
+#watchlist-title {
+  margin-top: 2rem;  /* Adds space above the title */
+  margin-bottom: 2rem; /* Adds space below the title */
+  text-align: center; /* Centers the title */
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start; /* Align items to the left */
+  padding: 0;
+  list-style: none;
+  max-width: 90%;
+  margin: 0 auto; /* Centers the container */
 }
 
-.watchlist-container {
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-
-
+/* Default watchlist items */
+.watchlist-item {
+  flex: 0 0 calc(20% - 2rem); /* 5 items per row */
+  max-width: 290px; /* Fixed max width */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px;
+  border-radius: 10px; /* Adds smooth corners */
 }
+
 
 .watchlist-item {
-  gap: 10px;
-  padding: 10px 0;
+  flex: 0 0 220px; /* Fixed width */
+
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  align-items: center;
-  width: 200px;
+  gap: 7px;
+  padding-bottom: 7px;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Smooth animation */
+}
+
+.watchlist-item:hover {
+  animation: neonGlow 1.5s infinite alternate ease-in-out; /* Applies animated color-shifting glow */
+}
+
+
+@keyframes neonGlow {
+  0% {
+    filter: drop-shadow(0 0 0.25px rgba(255, 20, 243, 0.08)) /* Extremely soft pink glow */
+            drop-shadow(0 0 1px rgba(255, 20, 212, 0.05)); /* Light second layer */
+  }
+  50% {
+    filter: drop-shadow(0 0 0.5px rgba(0, 221, 255, 0.09)) /* Extremely soft neon blue */
+            drop-shadow(0 0 1.5px rgba(0, 255, 255, 0.06)); /* Light second layer */
+  }
+  100% {
+    filter: drop-shadow(0 0 1px rgba(159, 43, 226, 0.08)) /* Extremely soft purple glow */
+            drop-shadow(0 0 1.5px rgba(137, 43, 226, 0.05)); /* Light second layer */
+  }
 }
 
 .watchlist-item h4{
   text-align: left;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   align-items: flex-start;
 }
 
@@ -65,17 +114,6 @@ h2{
   cursor: pointer;
   font-weight: bold;
   font-size: 5em;
-  
-}
-
-.remove-button:hover {
-  font-size: larger;
-}
-
-
-ul {
-  display: flex;
-  gap: 2rem;
 }
 
 .edit-section{
@@ -94,7 +132,7 @@ ul {
 }
 
 p {
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 
@@ -104,7 +142,6 @@ p {
   justify-content: space-between;
   font-size: 1rem;
   width: 100%;
-  padding: 5%;
   
 }
 
@@ -116,27 +153,199 @@ button {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border: 0.9px solid rgba(255, 255, 255, 0.512);
+  border: 1px solid rgba(255, 255, 255, 0.574);
   border-radius: 15px;
-  background: rgb(140,140,140);
+  background: rgba(0, 0, 0, 0.433);
   background: radial-gradient(circle, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.616) 100%);
   padding: 10px;
   width: 100%;
-  height: 270px;
-  box-shadow:
-
-  0 0 15px 5px rgba(255, 0, 255, 0.153), /* middle magenta */
-  0 0 30px 10px rgba(0, 255, 255, 0.141); 
+  height: 285px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.movie-info-section p{
+  color: rgba(255, 255, 255, 0.813);
+}
 .streaming-section{
-  border: 0.5px solid rgba(255, 255, 255, 0.512);
+  border: 1px solid rgba(255, 255, 255, 0.574);
   border-radius: 15px;
   background: rgb(140,140,140);
   background: radial-gradient(circle, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.616) 100%);
   padding: 10px;
   box-shadow:
 
-  0 0 15px 5px rgba(255, 0, 255, 0.153), /* middle magenta */
-  0 0 30px 10px rgba(0, 255, 255, 0.141); 
+  0 0 15px 5px rgba(0, 47, 255, 0.11), /* middle magenta */
+  0 0 30px 10px rgba(0, 255, 255, 0.041); 
+}
+
+.streaming-section{
+  font-size: 1.3rem;
+}
+
+.stream-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stream-button img {
+  width: 30px; /* Adjust width */
+  height: 30px; /* Adjust height */
+}
+
+/* Base button styles */
+/* Base button styles */
+button {
+  all: unset; /* Removes default button styles */
+  cursor: pointer; /* Ensures a clickable pointer */
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out; /* Smooth animation */
+}
+
+
+.remove-button:hover {
+  transform: scale(1.3); /* Slightly enlarges the button */
+  animation: neonGlow 1.5s infinite alternate ease-in-out; /* Applies animated color-shifting glow */
+}
+/* Hover effect with animated glow */
+button:hover {
+  transform: scale(1.3); /* Slightly enlarges the button */
+  animation: neonGlow 1.5s infinite alternate ease-in-out; /* Applies animated color-shifting glow */
+}
+
+/* Keyframes for animated, high-visibility glow */
+@keyframes neonGlow {
+  0% {
+    filter: drop-shadow(0 0 12px rgba(255, 20, 147, 0.9)); /* Soft pink */
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(0, 150, 255, 0.9)); /* Neon blue */
+  }
+  100% {
+    filter: drop-shadow(0 0 22px rgba(138, 43, 226, 1)); /* Bright purple */
+  }
+}
+
+input{
+  all: unset;
+  border-radius: 5px;
+  border: 0.5px solid white;
+  background-color: rgba(0, 0, 0, 0.535);
+  color: white;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 667px) {
+  ul {
+    justify-content: center; /* Centers the container on mobile */
+    gap: 5px;
+    padding: 0;
+
+  }
+
+  .watchlist-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .watchlist-item {
+    display: grid;
+    flex: 0 0 calc(50% - 1rem); /* Two items per row */
+    max-width: 50%; /* Ensures proper spacing */
+  }
+
+  /* Adjust text and button sizes for mobile */
+  .watchlist-item h4 {
+    font-size: 1rem; /* Makes titles smaller */
+
+  }
+
+  h2{
+    font-size: 1.5rem;
+  }
+
+  .stream-movies-now{
+    font-size: 0.7rem;
+  }
+
+  p {
+    font-size: 0.7rem; /* Smaller font for descriptions */
+  }
+
+  .back-button {
+    font-size: 1rem; /* Adjust back button size */
+  }
+
+  .stream-button img {
+    width: 20px; /* Smaller icon */
+    height: 20px;
+  }
+  .movie-info-section{
+    font-size: 1.5rem;
+    height: 160px;
+    border-radius: 10px;
+  }
+
+  .movie-info-section p{
+    font-size: 1rem;
+  }
+
+  .streaming-section{
+    border-radius: 10px;
+  }
+}
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+
+  ul {
+    justify-content: space-between; /* Space out items evenly */
+    gap: 1rem;
+  }
+
+  .watchlist-item {
+    flex: 0 0 calc(33.33% - 1.5rem); /* 3 items per row */
+    max-width: 31%; /* Prevent overflow and ensure spacing */
+    padding: 15px; /* Slightly more padding */
+    gap: 15px;
+  }
+
+  p {
+    font-size: 1rem; /* Text remains readable */
+  }
+
+  .stream-button img {
+    width: 22px; /* Adjust icon size */
+    height: 22px;
+  }
+
+  .queueflix-header {
+    flex-direction: row; /* Header items in a row for iPads */
+    justify-content: space-between; /* Distribute space evenly */
+    align-items: center;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .queueflix-header h2 {
+    font-size: 4rem; /* Adjust header font size */
+  }
+
+  #watchlist-title {
+    margin-top: 1.5rem; /* Adjust spacing for better alignment */
+    margin-bottom: 1.5rem;
+    font-size: 2.6rem; /* Adjust title font size */
+  }
+
+  .movie-info-section {
+    height: 290px; /* Let cards adjust dynamically to content */
+    padding: 15px;
+    font-size: 3rem;
+  }
+
+  .streaming-section{
+    height: 60px;
+  }
 }

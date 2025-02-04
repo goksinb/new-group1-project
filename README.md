@@ -62,7 +62,10 @@ Contributors & Contributions
 
 ### **Fatou**
 
-- 
+- Decided which API to use for the project.
+- Implemented a fetch function to retrieve data from the API.
+- Implemented the user interface based on the chosen design.
+- Added "Enter" functionality to the search input for easier navigation.
 
 ### **Gökşin**
 
@@ -70,6 +73,24 @@ Contributors & Contributions
 
 ### **Noory**
 
-- 
+- In the development of the PopupWindow component, I implemented several key features to enhance the user experience and functionality:
+  
+Movie Detail Display:
+I created a function that dynamically renders movie details in a popup window, providing users with quick access to important information about their selected content.
+
+Content Type Formatting:
+To improve readability and consistency, I implemented logic to capitalize the first letter of the content type (e.g., "Movie" or "TV Series") displayed in the popup window.
+
+Watchlist Integration:
+I developed a handler function that allows users to add movies to their watchlist directly from the popup. This function also closes the popup after adding an item, streamlining the process of adding multiple items to the watchlist.
+
+Title Truncation:
+To maintain a clean and consistent layout, I implemented a truncate function that limits the length of movie titles in the popup window. This function adds an ellipsis (...) to titles that exceed a specified character limit, ensuring that all titles fit neatly within the design.
+
+External Streaming Link:
+I integrated a direct link to Netflix, accessible via an arrow button in the popup. This feature provides users with quick access to potential streaming options for the selected content.
+
+Design:
+Using CSS, I crafted a visually appealing and design for the popup window. This ensures that the component looks great and functions well across various device sizes and screen resolutions.
 
 ### **Mohamed**
