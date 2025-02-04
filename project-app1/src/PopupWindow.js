@@ -8,6 +8,8 @@ import HeartHollow from "./Assets/HeartHollow.svg";
 function PopupWindow({ movie, onClose, onAddToWatchlist }) {
   if (!movie) return null;
 
+  //fdgdgfdgfdgdhgffz
+
   //In here I determine the type of content (TV Series or Capitalize first letter of the type data.)
   const type =
     movie.type === "tv_series"
