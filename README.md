@@ -91,6 +91,6 @@ External Streaming Link:
 I integrated a direct link to Netflix, accessible via an arrow button in the popup. This feature provides users with quick access to potential streaming options for the selected content.
 
 Design:
-Using CSS, I crafted a visually appealing and responsive design for the popup window. This ensures that the component looks great and functions well across various device sizes and screen resolutions.
+Using CSS, I crafted a visually appealing and design for the popup window. This ensures that the component looks great and functions well across various device sizes and screen resolutions.
 
 ### **Mohamed**
