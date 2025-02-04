@@ -124,6 +124,12 @@ h2 {
   background-color: black;
 }
 
+.results-grid, h3 {
+  text-align: start;
+  display: inline-block;
+ 
+}
+
 .movie-title {
   width: 100%;
   padding: 0 0 10px 0;
@@ -189,13 +195,13 @@ h4 {
   }
 
   .results-grid {
-    width: 95%;
-    max-width: none;
+    width: 88%;
     margin-left: 0;
     padding: 5px;
-    height: auto;
+    height: 250px;
+    align-self: flex-start;
   }
-
+ 
   .center-content h1 {
     font-size: 2rem;
   }
