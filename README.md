@@ -62,7 +62,10 @@ Contributors & Contributions
 
 ### **Fatou**
 
-- 
+- Decided which API to use for the project.
+- Implemented a fetch function to retrieve data from the API.
+- Implemented the user interface based on the chosen design.
+- Added "Enter" functionality to the search input for easier navigation.
 
 ### **Gökşin**
 
