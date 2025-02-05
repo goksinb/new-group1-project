@@ -18,7 +18,7 @@ In this group project, we created a platform where you can search for movies and
 
 ✅ **Save to Your Watchlist** – Click the heart to add movies and series to your list.
 
-✅ **Prioritize Favorites** – Mark the most important shows with a star.
+✅ **Edit or write in the tile** – Allowing users to give their saved movies/TV shows a more personal touch.
 
 ✅ **Manage Your List** – Remove items or get the streaming link with one click.
 
