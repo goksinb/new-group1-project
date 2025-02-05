@@ -79,6 +79,7 @@ h2 {
   overflow: hidden;
   max-height: 2.6em;
   line-height: 1.3em;
+  font-family: sans-serif;
 }
 
 .popup-title p {
