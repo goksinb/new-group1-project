@@ -58,13 +58,13 @@ const SearchList = () => {
     <div className="searchlist-container">
       <header>
         <div className="watchlist-text">
-          <h3>WATCHLIST</h3>
           <button
             className="header-watchlist-btn"
             onClick={() => navigate("/watchlist")}
             aria-label="View Watchlist"
-          >
+          > WATCHLIST
             <img src={Arrow} alt="Go to Watchlist" width="24" height="24" />
+            
           </button>
         </div>
       </header>
@@ -75,27 +75,27 @@ const SearchList = () => {
         <div className="search-container">
           <div className="search-bar">
             <input
-  id="movie-search"
-  type="text"
-  value={query}
-  onChange={(e) => setQuery(e.target.value)}
-  onKeyDown={(e) => {
-    if (e.key === "Enter") {
-      handleButtonClick(); // For users to be able to click on enter also instead of the button.
-    }
-  }}
-  placeholder="Search for a movie or series"
-  className="search-input"
-  aria-label="Search for a movie or series"
-/>
+              id="movie-search"
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleButtonClick(); // For users to be able to click on enter also instead of the button.
+                }
+              }}
+              placeholder="Search for a movie or series"
+              className="search-input"
+              aria-label="Search for a movie or series"
+            />
 
-<button
-  onClick={handleButtonClick}
-  className="search-button"
-  disabled={isLoading}
->
-  <img src={Arrow} alt="Arrow" width="24" height="24" />
-</button>
+            <button
+              onClick={handleButtonClick}
+              className="search-button"
+              disabled={isLoading}
+            >
+              <img src={Arrow} alt="Arrow" width="24" height="24" />
+            </button>
           </div>
 
           {/* Display error message */}

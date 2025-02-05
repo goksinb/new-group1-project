@@ -27,21 +27,48 @@ header {
   font-family: "SuperRichExpanded", sans-serif;
 }
 
-.watchlist-text,
-h3 {
+.watchlist-text{
   align-items: center;
   font-family: Helvetica, sans-serif;
   margin-bottom: 5px;
-  font-size: 1.6rem;
+  
+
 }
 
 .header-watchlist-btn {
-  background: none;
-  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  background: transparent;
   cursor: pointer;
-  margin-left: 10px;
-  
+  border: none;
+  margin-right: 10px;
+
+ 
 }
+.header-watchlist-btn:hover {
+  transform: scale(1.3);
+  animation: neonGlow 1.5s infinite alternate ease-in-out;
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+@keyframes neonGlow {
+  0% {
+    filter: drop-shadow(0 0 12px rgba(255, 20, 147, 0.9));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(0, 150, 255, 0.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 22px rgba(138, 43, 226, 1));
+  }
+}
+
+
 
 .center-content {
   display: flex;
@@ -85,6 +112,7 @@ h2 {
   border: 0.5px solid rgb(255, 255, 255);
   border-radius: 10px;
   margin-right: 10px;
+  text-align: center;
 }
 
 .search-button {
@@ -98,6 +126,24 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
   flex-shrink: 0;
+}
+
+.search-button:hover {
+  transform: scale(1.3);
+  animation: neonGlow 1.5s infinite alternate ease-in-out;
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+@keyframes neonGlow {
+  0% {
+    filter: drop-shadow(0 0 12px rgba(255, 20, 147, 0.9));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px rgba(0, 150, 255, 0.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 22px rgba(138, 43, 226, 1));
+  }
 }
 
 .search-button::before {
