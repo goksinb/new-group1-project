@@ -308,7 +308,7 @@ input{
 
 
   ul {
-    justify-content: space-between; 
+    justify-content: flex-start; 
     gap: 1rem;
   }
 

@@ -6,7 +6,7 @@ import EditIcon from "./Assets/Edit.svg";
 import CrossIcon from "./Assets/Cross.svg";
 import ArrowIcon from "./Assets/Arrow.svg";
 
-const API_KEY = "pdUII47F5C3IAAvK6tjYcg2EzkWTICjXO7Jtsxhq"; // API key for fetching streaming options
+const API_KEY = "LiAYss18E3BEu6lCgVjTAT0LI3SDjWky8XH3TaNL"; // API key for fetching streaming options
 
 function WatchList() {
   const { watchlist, removeFromWatchlist, updateWatchlistItem } = useMovieContext();
