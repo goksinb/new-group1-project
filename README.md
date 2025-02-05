@@ -69,12 +69,17 @@ Contributors & Contributions
 
 ### **Gökşin**
 
-- 
+-Implemented a searchList function to fetch and display the fetched movies on the page.
+-Created a React state using useState to store search results and manage the loading indicator.
+-Connected the input bar to the API to fetch movie titles based on the search query and store them for future use.
+-Added handleButtonClick Function: Validates the search query, triggers the API call to fetch movies, handles loading/error states, and updates the results based on the response
+-Used the title API to display only movie titles in the search bar, while also fetching the full movie/TV series array to display in the pop-up.
+-Added a loading status indicator while fetching data.
 
 ### **Noory**
 
 - In the development of the PopupWindow component, I implemented several key features to enhance the user experience and functionality:
-  
+
 Movie Detail Display:
 I created a function that dynamically renders movie details in a popup window, providing users with quick access to important information about their selected content.
 
@@ -108,6 +113,3 @@ Worked on the watchlist.js page right functions and structure to align with the 
 Fetched the Api to pull streaming services and display only the top version of the streaming service.
 
 created the css for the watchlist page and made it responsive.
-
-
-
