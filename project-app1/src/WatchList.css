@@ -32,69 +32,70 @@ font-weight: bold;
 
 }
 
-
+.queueflix-header{
+  padding-left: 3%;
+  padding-right: 3%;
+}
 .title-section button{
   font-size: 1rem;
   align-self: flex-start;
 }
 
 #watchlist-title {
-  margin-top: 2rem;  /* Adds space above the title */
-  margin-bottom: 2rem; /* Adds space below the title */
-  text-align: center; /* Centers the title */
+  margin-top: 2rem;  
+  margin-bottom: 2rem; 
+  text-align: center; 
 }
 ul {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: flex-start; /* Align items to the left */
+  justify-content: flex-start;
   padding: 0;
   list-style: none;
   max-width: 90%;
-  margin: 0 auto; /* Centers the container */
+  margin: 0 auto;
 }
 
-/* Default watchlist items */
 .watchlist-item {
-  flex: 0 0 calc(20% - 2rem); /* 5 items per row */
-  max-width: 290px; /* Fixed max width */
+  flex: 0 0 calc(20% - 2rem); 
+  max-width: 290px; 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 7px;
   padding: 10px;
-  border-radius: 10px; /* Adds smooth corners */
+  border-radius: 10px; 
 }
 
 
 .watchlist-item {
-  flex: 0 0 220px; /* Fixed width */
-
+  flex: 0 0 220px; 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 7px;
   padding-bottom: 7px;
-  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Smooth animation */
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; 
 }
 
 .watchlist-item:hover {
-  animation: neonGlow 1.5s infinite alternate ease-in-out; /* Applies animated color-shifting glow */
+  animation: neonGlow 1.5s infinite alternate ease-in-out; 
 }
 
 
 @keyframes neonGlow {
   0% {
-    filter: drop-shadow(0 0 0.25px rgba(255, 20, 243, 0.08)) /* Extremely soft pink glow */
-            drop-shadow(0 0 1px rgba(255, 20, 212, 0.05)); /* Light second layer */
+    filter: drop-shadow(0 0 0.25px rgba(255, 20, 243, 0.08)) 
+            drop-shadow(0 0 1px rgba(255, 20, 212, 0.05)); 
   }
   50% {
-    filter: drop-shadow(0 0 0.5px rgba(0, 221, 255, 0.09)) /* Extremely soft neon blue */
-            drop-shadow(0 0 1.5px rgba(0, 255, 255, 0.06)); /* Light second layer */
+    filter: drop-shadow(0 0 0.5px rgba(0, 221, 255, 0.09)) 
+            drop-shadow(0 0 1.5px rgba(0, 255, 255, 0.06)); 
   }
   100% {
-    filter: drop-shadow(0 0 1px rgba(159, 43, 226, 0.08)) /* Extremely soft purple glow */
-            drop-shadow(0 0 1.5px rgba(137, 43, 226, 0.05)); /* Light second layer */
+    filter: drop-shadow(0 0 1px rgba(159, 43, 226, 0.08)) 
+            drop-shadow(0 0 1.5px rgba(137, 43, 226, 0.05)); 
   }
 }
 
@@ -174,7 +175,7 @@ button {
   padding: 10px;
   box-shadow:
 
-  0 0 15px 5px rgba(0, 47, 255, 0.11), /* middle magenta */
+  0 0 15px 5px rgba(0, 47, 255, 0.11), 
   0 0 30px 10px rgba(0, 255, 255, 0.041); 
 }
 
@@ -189,39 +190,37 @@ button {
 }
 
 .stream-button img {
-  width: 30px; /* Adjust width */
-  height: 30px; /* Adjust height */
+  width: 30px;
+  height: 30px; 
 }
 
-/* Base button styles */
-/* Base button styles */
 button {
-  all: unset; /* Removes default button styles */
-  cursor: pointer; /* Ensures a clickable pointer */
-  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out; /* Smooth animation */
+  all: unset; 
+  cursor: pointer; 
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out; 
 }
 
 
 .remove-button:hover {
-  transform: scale(1.3); /* Slightly enlarges the button */
-  animation: neonGlow 1.5s infinite alternate ease-in-out; /* Applies animated color-shifting glow */
-}
-/* Hover effect with animated glow */
-button:hover {
-  transform: scale(1.3); /* Slightly enlarges the button */
-  animation: neonGlow 1.5s infinite alternate ease-in-out; /* Applies animated color-shifting glow */
+  transform: scale(1.3); 
+  animation: neonGlow 1.5s infinite alternate ease-in-out; 
 }
 
-/* Keyframes for animated, high-visibility glow */
+ button:hover {
+  transform: scale(1.3); 
+  animation: neonGlow 1.5s infinite alternate ease-in-out;
+}
+
+
 @keyframes neonGlow {
   0% {
-    filter: drop-shadow(0 0 12px rgba(255, 20, 147, 0.9)); /* Soft pink */
+    filter: drop-shadow(0 0 12px rgba(255, 20, 147, 0.9)); 
   }
   50% {
-    filter: drop-shadow(0 0 18px rgba(0, 150, 255, 0.9)); /* Neon blue */
+    filter: drop-shadow(0 0 18px rgba(0, 150, 255, 0.9)); 
   }
   100% {
-    filter: drop-shadow(0 0 22px rgba(138, 43, 226, 1)); /* Bright purple */
+    filter: drop-shadow(0 0 22px rgba(138, 43, 226, 1)); 
   }
 }
 
@@ -236,7 +235,7 @@ input{
 
 @media screen and (max-width: 667px) {
   ul {
-    justify-content: center; /* Centers the container on mobile */
+    justify-content: center; 
     gap: 5px;
     padding: 0;
 
@@ -250,13 +249,13 @@ input{
 
   .watchlist-item {
     display: grid;
-    flex: 0 0 calc(50% - 1rem); /* Two items per row */
-    max-width: 50%; /* Ensures proper spacing */
+    flex: 0 0 calc(50% - 1rem);
+    max-width: 50%; 
   }
 
-  /* Adjust text and button sizes for mobile */
+
   .watchlist-item h4 {
-    font-size: 1rem; /* Makes titles smaller */
+    font-size: 1rem; 
 
   }
 
@@ -269,15 +268,15 @@ input{
   }
 
   p {
-    font-size: 0.7rem; /* Smaller font for descriptions */
+    font-size: 0.7rem; 
   }
 
   .back-button {
-    font-size: 1rem; /* Adjust back button size */
+    font-size: 1rem; 
   }
 
   .stream-button img {
-    width: 20px; /* Smaller icon */
+    width: 20px;
     height: 20px;
   }
   .movie-info-section{
@@ -301,46 +300,45 @@ input{
 
 
   ul {
-    justify-content: space-between; /* Space out items evenly */
+    justify-content: space-between; 
     gap: 1rem;
   }
 
   .watchlist-item {
-    flex: 0 0 calc(33.33% - 1.5rem); /* 3 items per row */
-    max-width: 31%; /* Prevent overflow and ensure spacing */
-    padding: 15px; /* Slightly more padding */
+    flex: 0 0 calc(33.33% - 1.5rem); 
+    max-width: 31%; 
+    padding: 15px; 
     gap: 15px;
   }
 
   p {
-    font-size: 1rem; /* Text remains readable */
+    font-size: 1rem;
   }
 
   .stream-button img {
-    width: 22px; /* Adjust icon size */
+    width: 22px;
     height: 22px;
   }
 
   .queueflix-header {
-    flex-direction: row; /* Header items in a row for iPads */
-    justify-content: space-between; /* Distribute space evenly */
+    flex-direction: row; 
+    justify-content: space-between; 
     align-items: center;
-    padding-left: 3%;
-    padding-right: 3%;
   }
 
+
   .queueflix-header h2 {
-    font-size: 4rem; /* Adjust header font size */
+    font-size: 4rem; 
   }
 
   #watchlist-title {
-    margin-top: 1.5rem; /* Adjust spacing for better alignment */
+    margin-top: 1.5rem; 
     margin-bottom: 1.5rem;
-    font-size: 2.6rem; /* Adjust title font size */
+    font-size: 2.6rem; 
   }
 
   .movie-info-section {
-    height: 290px; /* Let cards adjust dynamically to content */
+    height: 290px;
     padding: 15px;
     font-size: 3rem;
   }
