@@ -1,28 +1,34 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useMovieContext } from "./MovieContext";
-import { fetchMovie } from "./FetchMovie";
+import React, {useState, useEffect, useRef} from "react";
+import {useNavigate} from "react-router-dom";
+import {useMovieContext} from "./MovieContext";
+import {fetchMovie} from "./FetchMovie";
 import PopupWindow from "./PopupWindow";
 import Arrow from "./Assets/Arrow.svg";
 import "./SearchList.css";
 import "./App.css";
 
 const SearchList = () => {
-  // State variables for managing search functionality and results
-  const [query, setQuery] = useState(""); // Stores the current search query
-  const [results, setResults] = useState([]); // Stores the search results
-  const [notFound, setNotFound] = useState(false); // Indicates if no results were found
-  const [selectedMovie, setSelectedMovie] = useState(null); // Stores the currently selected movie for the popup
-  const [isLoading, setIsLoading] = useState(false); // Indicates if a search is in progress
-  const [error, setError] = useState(null); // Stores any error messages
-  const [hasSearched, setHasSearched] = useState(false); // Indicates if a search has been performed
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [notFound, setNotFound] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [hasSearched, setHasSearched] = useState(false);
 
-  // Access the addToWatchlist function from the MovieContext
-  const { addToWatchlist } = useMovieContext();
-  // Hook for programmatic navigation
+  const {addToWatchlist} = useMovieContext();
   const navigate = useNavigate();
+  const searchInputRef = useRef(null);
+  const firstResultRef = useRef(null);
 
-  // Function to handle the search button click
+  useEffect(() => {
+    if (selectedMovie) {
+      document.getElementById("popup-window")?.focus();
+    } else {
+      searchInputRef.current?.focus();
+    }
+  }, [selectedMovie]);
+
   const handleButtonClick = async () => {
     if (query.trim() === "") {
       setError("Please enter a search query");
@@ -35,9 +41,12 @@ const SearchList = () => {
 
     try {
       const movieResults = await fetchMovie(query);
-      console.log("Fetched Movies:", movieResults);
       setResults(movieResults);
       setNotFound(movieResults.length === 0);
+
+      if (movieResults.length > 0) {
+        setTimeout(() => firstResultRef.current?.focus(), 100);
+      }
     } catch (error) {
       console.error("Error fetching movies:", error);
       setResults([]);
@@ -48,7 +57,13 @@ const SearchList = () => {
     }
   };
 
-  // Function to add a movie to the watchlist and close the popup
+  // Handle Enter key press in the search input
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleButtonClick();
+    }
+  };
+
   const handleAddToWatchlist = (movie) => {
     addToWatchlist(movie);
     setSelectedMovie(null);
@@ -74,56 +89,69 @@ const SearchList = () => {
         <h2 className="title">FIND YOUR FLICK</h2>
         <div className="search-container">
           <div className="search-bar">
-            <input
-              id="movie-search"
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleButtonClick(); // For users to be able to click on enter also instead of the button.
-                }
-              }}
-              placeholder="Search for a movie or series"
-              className="search-input"
-              aria-label="Search for a movie or series"
-            />
+  <input
+    id="movie-search"
+    type="text"
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        handleButtonClick(); // Users can press Enter instead of clicking the button
+      }
+    }}
+    placeholder="Search for a movie or series"
+    className="search-input"
+    ref={searchInputRef}
+    aria-describedby="search-error"
+    aria-label="Search for a movie or series"
+  />
+  
+  <button
+    onClick={handleButtonClick}
+    className="search-button"
+    disabled={isLoading}
+    aria-label="Search"
+  >
+    <img src={Arrow} alt="Search" width="24" height="24" />
+  </button>
+</div>
 
-            <button
-              onClick={handleButtonClick}
-              className="search-button"
-              disabled={isLoading}
-            >
-              <img src={Arrow} alt="Arrow" width="24" height="24" />
-            </button>
-          </div>
 
-          {/* Display error message */}
           {error && (
-            <p className="error-message" role="alert">
+            <p
+              className="error-message"
+              id="search-error"
+              role="alert"
+              aria-live="assertive"
+            >
               {error}
             </p>
           )}
 
-          {/* Display loading message */}
           {isLoading && (
-            <p className="loading-message" role="alert">
+            <p className="loading-message" role="alert" aria-live="polite">
               Searching...
             </p>
           )}
 
-          {/* Results and error message */}
           {hasSearched && (
             <div className="results-grid">
-              {results.map((movie) => (
-                <div key={movie.id} className="result-card">
-                  <h3
-                    className="movie-title"
-                    onClick={() => setSelectedMovie(movie)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {movie.name}
-                  </h3>
+              {results.map((movie, index) => (
+                <div
+                  key={movie.id}
+                  className="result-card"
+                  tabIndex="0"
+                  role="button"
+                  onClick={() => setSelectedMovie(movie)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      setSelectedMovie(movie);
+                    }
+                  }}
+                  ref={index === 0 ? firstResultRef : null}
+                  style={{cursor: "pointer"}}
+                >
+                  <h3 className="movie-title">{movie.name}</h3>
                 </div>
               ))}
               {notFound && <p className="not-found">No results found</p>}
@@ -131,7 +159,6 @@ const SearchList = () => {
           )}
         </div>
 
-        {/* PopUp for chosen movie */}
         {selectedMovie && (
           <PopupWindow
             movie={selectedMovie}
