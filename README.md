@@ -62,7 +62,7 @@ Contributors & Contributions
 
 ### **Fatou**
 
-- Decided which API to use for the project.
+- I developed the concept for the website and determined the best API for the project.
 - Implemented a fetch function to retrieve data from the API.
 - Implemented the user interface based on the chosen design on the Search list page.
 - Added "Enter" functionality to the search input for easier navigation.
