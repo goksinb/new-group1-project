@@ -124,15 +124,16 @@ h2 {
   background-color: black;
 }
 
+.movie-title {
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 1px solid white;
+}
+
 .results-grid,
 h3 {
   text-align: start;
-}
-
-.movie-title {
-  width: 100%;
-  padding: 0 0 10px 0;
-  border-bottom: 1px solid white;
+  display: inline-block;
 }
 
 h1 {
@@ -161,10 +162,9 @@ h4 {
 
 .error-message {
   color: white;
-  font-size: 1.5rem;
-  margin-top: 5px;
+  font-size: 2rem;
   font-family: Helvetica, sans-serif;
-  text-align: center;
+  justify-content: center;
   padding: 10px;
   border-radius: 5px;
 }
@@ -178,8 +178,16 @@ h4 {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+
+
   .watchlist-text {
-    justify-content: center;
+    justify-content: end;
+    margin-bottom: 30px;
+    
+  }
+  .watchlist-text,
+  h3 {
+    font-size: 1rem;
   }
 
   .search-bar {
@@ -201,15 +209,15 @@ h4 {
   }
 
   .center-content h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .center-content h2 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .center-content h4 {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .error-message,
   p {
@@ -221,6 +229,7 @@ h4 {
   .search-input {
     padding: 8px;
     font-size: 1rem;
+   
   }
 
   .search-button {
@@ -242,7 +251,7 @@ h4 {
   }
 
   .center-content h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .center-content h2 {
@@ -252,9 +261,14 @@ h4 {
   .center-content h4 {
     font-size: 1rem;
   }
-
+  .watchlist-text {
+    justify-content: end;
+  }
   .watchlist-text,
   h3 {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
+  }
+  .header-watchlist-btn {
+    width: 5px;
   }
 }
