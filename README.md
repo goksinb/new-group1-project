@@ -62,10 +62,10 @@ Contributors & Contributions
 
 ### **Fatou**
 
-- I developed the concept for the website and determined the best API for the project.
+- Developed the website concept and selected the most suitable API for the project.
 - Implemented a fetch function to retrieve data from the API.
-- Implemented the user interface based on the chosen design on the Search list page.
-- I optimized the responsiveness of the Search list page for both larger and smaller screens.
+- Implemented the user interface based on the chosen design for the Search list page.
+- Optimized the responsiveness of the Search list page for larger and smaller screens.
 - Added "Enter" functionality to the search input for easier navigation.
 
 ### **Gökşin**
