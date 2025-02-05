@@ -38,9 +38,9 @@ On the first page, you’ll find a search bar where you can type the name of a m
 
 This is where all your saved movies and series will be stored.
 
-- Mark favorites with a **star** to highlight what’s most important.
+- Edit the movie title or write something by clicking on the **pencil**.
 - Click the **arrow** to get a direct streaming link.
-- **Delete** items from your list when you're done watching.
+- **Delete** items from your list when you're done watching by clicking on the X.
 
 ---
 
