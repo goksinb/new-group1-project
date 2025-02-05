@@ -57,15 +57,21 @@ ul {
   margin: 0 auto;
 }
 
+.stream-movies-now{
+display: flex;
+justify-content: flex-start;
+}
+
 .watchlist-item {
   flex: 0 0 calc(20% - 2rem); 
-  max-width: 290px; 
+  width: 250px; 
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 7px;
   padding: 10px;
   border-radius: 10px; 
+
 }
 
 
@@ -77,6 +83,7 @@ ul {
   gap: 7px;
   padding-bottom: 7px;
   transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; 
+  
 }
 
 .watchlist-item:hover {
@@ -115,6 +122,7 @@ ul {
   cursor: pointer;
   font-weight: bold;
   font-size: 5em;
+  padding: 2%;
 }
 
 .edit-section{
