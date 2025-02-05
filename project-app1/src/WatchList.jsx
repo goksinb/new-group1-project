@@ -77,26 +77,25 @@ function WatchList() {
       {/* Header section with title and navigation button */}
       <div className="queueflix-header">
         <div className="queueflix-banner">
-        <h2>QUEUEFLIX</h2>
-           {/* Section title for streaming movies */}
-      <h4 className="stream-movies-now">STREAM MOVIES NOW</h4>
-      </div>
+          <h2>QUEUEFLIX</h2>
+          {/* Section title for streaming movies */}
+          <h4 className="stream-movies-now">STREAM MOVIES NOW</h4>
+        </div>
         <button onClick={() => navigate("/")} className="back-button" aria-label="Back to Search">
           HOME <img src={ArrowIcon} alt="Stream" width={25} height={25} />
         </button>
       </div>
 
-
-      {/* Watchlist title */}
-      <h2 id="watchlist-title">My Watchlist</h2>
+      {/* Watchlist title with aria-live to announce changes */}
+      <h2 id="watchlist-title" aria-live="polite">My Watchlist</h2>
 
       {/* Check if watchlist is empty */}
       {watchlist.length === 0 ? (
-        <p>Your watchlist is empty.</p>
+        <p role="alert">Your watchlist is empty.</p> 
       ) : (
         <ul aria-labelledby="watchlist-title">
           {watchlist.map((movie) => (
-            <li key={movie.id} className="watchlist-item">
+            <li key={movie.id} className="watchlist-item" tabIndex={0}> 
               {/* Movie info section */}
               <div className="movie-info-section">
                 {/* Movie title section */}
@@ -107,12 +106,12 @@ function WatchList() {
                       value={editedTitle}
                       onChange={(e) => setEditedTitle(e.target.value)}
                       onBlur={() => handleSave(movie)}
-                      onKeyPress={(e) => e.key === "Enter" && handleSave(movie)}
+                      onKeyDown={(e) => e.key === "Enter" && handleSave(movie)} // Replaced onKeyPress with onKeyDown
                       aria-label={`Edit title for ${movie.name}`}
                     />
                   ) : (
                     // Display movie title with truncation
-                    <h4 title={movie.name}>{truncateText(movie.name, 20)}</h4>
+                    <h4 title={movie.name} tabIndex={0}>{truncateText(movie.name, 20)}</h4> 
                   )}
                   {/* Remove button to delete movie from watchlist */}
                   <button
@@ -120,13 +119,13 @@ function WatchList() {
                     className="remove-button"
                     aria-label={`Remove ${movie.name} from watchlist`}
                   >
-                    <img src={CrossIcon} alt="Cross" width={20} height={20} />
+                    <img src={CrossIcon} alt="Remove from watchlist" width={20} height={20} />
                   </button>
                 </div>
 
                 {/* Section to display movie type and edit button */}
                 <div className="edit-section">
-                  <p>{formatType(movie.type)}</p>
+                  <p tabIndex={0}>{formatType(movie.type)}</p>
                   <button onClick={() => handleEdit(movie)} aria-label={`Edit ${movie.name}`}>
                     <img src={EditIcon} alt="Edit" width={20} height={20} />
                   </button>
@@ -136,10 +135,11 @@ function WatchList() {
               {/* Display streaming options if available */}
               {streamingLinks[movie.id] && streamingLinks[movie.id].length > 0 && (
                 <div className="streaming-section">
-                  <p>Stream Now</p>
+                  <p tabIndex={0}>Stream Now</p>
                   <button
                     onClick={() => window.open(streamingLinks[movie.id][0].web_url, "_blank")}
                     className="stream-button"
+                    aria-label={`Watch ${movie.name} on streaming platform`}
                   >
                     <img src={ArrowIcon} alt="Stream" width={20} height={20} />
                   </button>
