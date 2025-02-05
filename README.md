@@ -14,7 +14,7 @@ In this group project, we created a platform where you can search for movies and
 
 ✅ **Get Streaming Links** – Click the arrow directly to the streaming platform.
 
-✅ **View Details** – See the title and release year before watching.
+✅ **View Details** – See the title before watching.
 
 ✅ **Save to Your Watchlist** – Click the heart to add movies and series to your list.
 
