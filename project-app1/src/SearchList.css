@@ -315,7 +315,11 @@ h4 {
   h3 {
     font-size: 0.8rem;
   }
+
   .header-watchlist-btn {
     width: 5px;
+    font-size: 1rem;
+    margin-right: 40px;
   }
+  
 }
