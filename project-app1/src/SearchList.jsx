@@ -73,13 +73,13 @@ const SearchList = () => {
     <div className="searchlist-container">
       <header>
         <div className="watchlist-text">
-          <h3>WATCHLIST</h3>
           <button
             className="header-watchlist-btn"
             onClick={() => navigate("/watchlist")}
             aria-label="View Watchlist"
-          >
+          > WATCHLIST
             <img src={Arrow} alt="Go to Watchlist" width="24" height="24" />
+            
           </button>
         </div>
       </header>
@@ -89,27 +89,33 @@ const SearchList = () => {
         <h2 className="title">FIND YOUR FLICK</h2>
         <div className="search-container">
           <div className="search-bar">
-            <input
-              id="movie-search"
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyPress} // Added Enter key function
-              placeholder="Search for a movie or series"
-              className="search-input"
-              ref={searchInputRef}
-              aria-describedby="search-error"
-              aria-label="Search for a movie or series"
-            />
-            <button
-              onClick={handleButtonClick}
-              className="search-button"
-              disabled={isLoading}
-              aria-label="Search"
-            >
-              <img src={Arrow} alt="Search" width="24" height="24" />
-            </button>
-          </div>
+  <input
+    id="movie-search"
+    type="text"
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        handleButtonClick(); // Users can press Enter instead of clicking the button
+      }
+    }}
+    placeholder="Search for a movie or series"
+    className="search-input"
+    ref={searchInputRef}
+    aria-describedby="search-error"
+    aria-label="Search for a movie or series"
+  />
+  
+  <button
+    onClick={handleButtonClick}
+    className="search-button"
+    disabled={isLoading}
+    aria-label="Search"
+  >
+    <img src={Arrow} alt="Search" width="24" height="24" />
+  </button>
+</div>
+
 
           {error && (
             <p
