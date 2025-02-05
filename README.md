@@ -1,8 +1,7 @@
-# group1-project
 
 # **QUEFLIX**
 
-Find out where to stream your favorite movies and TV shows
+Find out where to stream your favorite movies and TV shows!
 
 ## **About the Project**
 
