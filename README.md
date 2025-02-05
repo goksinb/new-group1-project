@@ -31,8 +31,8 @@ In this group project, we created a platform where you can search for movies and
 On the first page, you’ll find a search bar where you can type the name of a movie or TV show.
 
 - Click the **arrow** to get a direct link to the streaming platform.
-- See **basic details** such as the title and release year.
-- Click the **heart** to add it to your personal watchlist.
+- See **basic details** such as the title and if it is a TV show or movie.
+- Click the **heart** to add it to your watchlist.
 
 ### **2️⃣ Watchlist Page**
 
@@ -81,36 +81,36 @@ Contributors & Contributions
 
 - In the development of the PopupWindow component, I implemented several key features to enhance the user experience and functionality:
 
-Movie Detail Display:
+- Movie Detail Display:
 I created a function that dynamically renders movie details in a popup window, providing users with quick access to important information about their selected content.
 
-Content Type Formatting:
+- Content Type Formatting:
 To improve readability and consistency, I implemented logic to capitalize the first letter of the content type (e.g., "Movie" or "TV Series") displayed in the popup window.
 
-Watchlist Integration:
+- Watchlist Integration:
 I developed a handler function that allows users to add movies to their watchlist directly from the popup. This function also closes the popup after adding an item, streamlining the process of adding multiple items to the watchlist.
 
-Title Truncation:
+- Title Truncation:
 To maintain a clean and consistent layout, I implemented a truncate function that limits the length of movie titles in the popup window. This function adds an ellipsis (...) to titles that exceed a specified character limit, ensuring that all titles fit neatly within the design.
 
-External Streaming Link:
+- External Streaming Link:
 I integrated a direct link to Netflix, accessible via an arrow button in the popup. This feature provides users with quick access to potential streaming options for the selected content.
 
-Design:
+- Design:
 Using CSS, I crafted a visually appealing and design for the popup window. This ensures that the component looks great and functions well across various device sizes and screen resolutions.
 
 ### **Mohamed**
 
-Designed the webpage on figma, chosed font and design elements-
+- Designed the webpage on figma, chosed font and design elements-
 
-Created the global stylesheet for the project
+- Created the global stylesheet for the project
 
-Created SVG:s and background through illustrator for the project
+- Created SVG:s and background through illustrator for the project
 
-Worked on the watchlist page, created the layout with react
+- Worked on the watchlist page, created the layout with react
 
-Worked on the watchlist.js page right functions and structure to align with the design
+- Worked on the watchlist.js page right functions and structure to align with the design
 
-Fetched the Api to pull streaming services and display only the top version of the streaming service.
+- Fetched the Api to pull streaming services and display only the top version of the streaming service.
 
-created the css for the watchlist page and made it responsive.
+- created the css for the watchlist page and made it responsive.
