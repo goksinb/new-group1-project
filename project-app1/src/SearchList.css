@@ -30,9 +30,9 @@ header {
 .watchlist-text,
 h3 {
   align-items: center;
-  font-family: "SuperRichExpanded", sans-serif;
+  font-family: Helvetica, sans-serif;
   margin-bottom: 5px;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .header-watchlist-btn {
@@ -40,6 +40,7 @@ h3 {
   border: none;
   cursor: pointer;
   margin-left: 10px;
+  
 }
 
 .center-content {
@@ -48,7 +49,7 @@ h3 {
   align-items: center;
   text-align: center;
   width: 100%;
-  font-family: "SuperRichExpanded", sans-serif;
+  
 }
 .title,
 h2 {
