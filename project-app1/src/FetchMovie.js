@@ -1,4 +1,5 @@
 export const fetchMovie = async (query) => {
+  // api key should be handled somewhere safe
   const apiKey = "LiAYss18E3BEu6lCgVjTAT0LI3SDjWky8XH3TaNL";
   try {
     const response = await fetch(
@@ -10,6 +11,7 @@ export const fetchMovie = async (query) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+    // remove console.log from production code
     console.log("API Response:", data); // Debug API response
     return data.results || []; // Fixed: return results, not title_results
   } catch (error) {

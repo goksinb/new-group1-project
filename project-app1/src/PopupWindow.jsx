@@ -22,8 +22,8 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
 
   //This function is for taking care of the title of the movie in the popupwindow that it should not exceeds a certain length of the characters.
   const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + "...";
+    // use ternary operator for readability
+    return text.length <= maxLength ? text : text.slice(0, maxLength) + "...";
   };
 
   return (
