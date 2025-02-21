@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useRef} from "react";
-import {useNavigate} from "react-router-dom";
-import {useMovieContext} from "./MovieContext";
-import {fetchMovie} from "./FetchMovie";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useMovieContext } from "./MovieContext";
+import { fetchMovie } from "./FetchMovie";
 import PopupWindow from "./PopupWindow";
 import Arrow from "./Assets/Arrow.svg";
 import "./SearchList.css";
@@ -16,21 +16,20 @@ const SearchList = () => {
   const [error, setError] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
 
-  const {addToWatchlist} = useMovieContext();
+  const { addToWatchlist } = useMovieContext();
   const navigate = useNavigate();
   const searchInputRef = useRef(null);
   const firstResultRef = useRef(null);
 
   useEffect(() => {
-    if (selectedMovie) {
-      document.getElementById("popup-window")?.focus();
-    } else {
-      searchInputRef.current?.focus();
-    }
+    // use ternary operator for readability
+    selectedMovie
+      ? document.getElementById("popup-window")?.focus()
+      : searchInputRef.current?.focus();
   }, [selectedMovie]);
 
   const handleButtonClick = async () => {
-    if (query.trim() === "") {
+    if (!query.trim()) {
       setError("Please enter a search query");
       return;
     }
@@ -58,12 +57,7 @@ const SearchList = () => {
   };
 
   // Handle Enter key press in the search input
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleButtonClick();
-    }
-  };
-
+  // not used anywhere, delete
   const handleAddToWatchlist = (movie) => {
     addToWatchlist(movie);
     setSelectedMovie(null);
@@ -77,9 +71,9 @@ const SearchList = () => {
             className="header-watchlist-btn"
             onClick={() => navigate("/watchlist")}
             aria-label="View Watchlist"
-          > WATCHLIST
+          >
+            WATCHLIST
             <img src={Arrow} alt="Go to Watchlist" width="24" height="24" />
-            
           </button>
         </div>
       </header>
@@ -89,33 +83,32 @@ const SearchList = () => {
         <h2 className="title">FIND YOUR FLICK</h2>
         <div className="search-container">
           <div className="search-bar">
-  <input
-    id="movie-search"
-    type="text"
-    value={query}
-    onChange={(e) => setQuery(e.target.value)}
-    onKeyDown={(e) => {
-      if (e.key === "Enter") {
-        handleButtonClick(); // Users can press Enter instead of clicking the button
-      }
-    }}
-    placeholder="Search for a movie or series"
-    className="search-input"
-    ref={searchInputRef}
-    aria-describedby="search-error"
-    aria-label="Search for a movie or series"
-  />
-  
-  <button
-    onClick={handleButtonClick}
-    className="search-button"
-    disabled={isLoading}
-    aria-label="Search"
-  >
-    <img src={Arrow} alt="Search" width="24" height="24" />
-  </button>
-</div>
+            <input
+              id="movie-search"
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleButtonClick(); // Users can press Enter instead of clicking the button
+                }
+              }}
+              placeholder="Search for a movie or series"
+              className="search-input"
+              ref={searchInputRef}
+              aria-describedby="search-error"
+              aria-label="Search for a movie or series"
+            />
 
+            <button
+              onClick={handleButtonClick}
+              className="search-button"
+              disabled={isLoading}
+              aria-label="Search"
+            >
+              <img src={Arrow} alt="Search" width="24" height="24" />
+            </button>
+          </div>
 
           {error && (
             <p
@@ -149,7 +142,7 @@ const SearchList = () => {
                     }
                   }}
                   ref={index === 0 ? firstResultRef : null}
-                  style={{cursor: "pointer"}}
+                  style={{ cursor: "pointer" }}
                 >
                   <h3 className="movie-title">{movie.name}</h3>
                 </div>
