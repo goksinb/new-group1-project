@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import {useMovieContext} from "./MovieContext";
-import {fetchMovie} from "./FetchMovie";
+import {fetchMovie, searchMovies} from "./FetchMovie";
 import PopupWindow from "./PopupWindow";
 import Arrow from "./Assets/Arrow.svg";
 import "./SearchList.css";
@@ -34,30 +34,27 @@ const SearchList = () => {
       setError("Please enter a search query");
       return;
     }
-
+  
     setIsLoading(true);
     setError(null);
     setHasSearched(true);
-
+  
     try {
-      const movieResults = await fetchMovie(query);
+      const movieResults = await searchMovies(query);
       setResults(movieResults);
       setNotFound(movieResults.length === 0);
-
-      if (movieResults.length > 0) {
-        setTimeout(() => firstResultRef.current?.focus(), 100);
-      }
     } catch (error) {
-      console.error("Error fetching movies:", error);
+      console.error("Search error:", error);
+      setError(error.message.includes('No movies found') 
+        ? "No movies found, try another search" 
+        : "Search failed, please try again");
       setResults([]);
       setNotFound(false);
-      setError("An error occurred while fetching movies. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
-
-  // Handle Enter key press in the search input
+  
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleButtonClick();
@@ -77,9 +74,9 @@ const SearchList = () => {
             className="header-watchlist-btn"
             onClick={() => navigate("/watchlist")}
             aria-label="View Watchlist"
-          > WATCHLIST
+          > 
+            WATCHLIST
             <img src={Arrow} alt="Go to Watchlist" width="24" height="24" />
-            
           </button>
         </div>
       </header>
@@ -89,41 +86,30 @@ const SearchList = () => {
         <h2 className="title">FIND YOUR FLICK</h2>
         <div className="search-container">
           <div className="search-bar">
-  <input
-    id="movie-search"
-    type="text"
-    value={query}
-    onChange={(e) => setQuery(e.target.value)}
-    onKeyDown={(e) => {
-      if (e.key === "Enter") {
-        handleButtonClick(); // Users can press Enter instead of clicking the button
-      }
-    }}
-    placeholder="Search for a movie or series"
-    className="search-input"
-    ref={searchInputRef}
-    aria-describedby="search-error"
-    aria-label="Search for a movie or series"
-  />
-  
-  <button
-    onClick={handleButtonClick}
-    className="search-button"
-    disabled={isLoading}
-    aria-label="Search"
-  >
-    <img src={Arrow} alt="Search" width="24" height="24" />
-  </button>
-</div>
-
+            <input
+              id="movie-search"
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyPress}
+              placeholder="Search for a movie or series"
+              className="search-input"
+              ref={searchInputRef}
+              aria-describedby="search-error"
+              aria-label="Search for a movie or series"
+            />
+            <button
+              onClick={handleButtonClick}
+              className="search-button"
+              disabled={isLoading}
+              aria-label="Search"
+            >
+              <img src={Arrow} alt="Search" width="24" height="24" />
+            </button>
+          </div>
 
           {error && (
-            <p
-              className="error-message"
-              id="search-error"
-              role="alert"
-              aria-live="assertive"
-            >
+            <p className="error-message" id="search-error" role="alert" aria-live="assertive">
               {error}
             </p>
           )}
@@ -136,24 +122,28 @@ const SearchList = () => {
 
           {hasSearched && (
             <div className="results-grid">
-              {results.map((movie, index) => (
-                <div
-                  key={movie.id}
-                  className="result-card"
-                  tabIndex="0"
-                  role="button"
-                  onClick={() => setSelectedMovie(movie)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      setSelectedMovie(movie);
-                    }
-                  }}
-                  ref={index === 0 ? firstResultRef : null}
-                  style={{cursor: "pointer"}}
-                >
-                  <h3 className="movie-title">{movie.name}</h3>
-                </div>
-              ))}
+              {results.map((movie, index) => {
+                const uniqueKey = movie._id || movie.imdbID || `movie-${index}`;
+                return (
+                  <div
+                    key={uniqueKey}
+                    className="result-card"
+                    tabIndex="0"
+                    role="button"
+                    onClick={() => setSelectedMovie(movie)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        setSelectedMovie(movie);
+                      }
+                    }}
+                    ref={index === 0 ? firstResultRef : null}
+                    style={{cursor: "pointer"}}
+                  >
+                    <h3 className="movie-title">{movie.title || movie.name}</h3>
+                    {movie.year && <p className="movie-year">{movie.year}</p>}
+                  </div>
+                );
+              })}
               {notFound && <p className="not-found">No results found</p>}
             </div>
           )}

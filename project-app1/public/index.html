@@ -9,7 +9,22 @@
       name="description"
       content="Web site created using create-react-app"
     />
-
+      <!-- Google Analytics (GDPR-compliant) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN5K6DZKT1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Only initialize if consent was given
+        if (localStorage.getItem('gaConsent') === 'true') {
+          gtag('js', new Date());
+          gtag('config', 'G-CN5K6DZKT1', {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            send_page_view: localStorage.getItem('gaConsent') === 'true'
+          });
+        }
+      </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

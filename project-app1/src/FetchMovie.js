@@ -1,19 +1,25 @@
-export const fetchMovie = async (query) => {
-  const apiKey = "LiAYss18E3BEu6lCgVjTAT0LI3SDjWky8XH3TaNL";
+export const fetchMovie = async () => {
   try {
-    const response = await fetch(
-      `https://api.watchmode.com/v1/autocomplete-search/?apiKey=${apiKey}&search_value=${encodeURIComponent(
-        query
-      )}&search_type=1`
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    console.log("API Response:", data); // Debug API response
-    return data.results || []; // Fixed: return results, not title_results
+    const response = await fetch('http://localhost:3000/movies');
+    return await response.json();
   } catch (error) {
-    console.error("Something went wrong:", error);
+    console.error("Fetch error:", error);
     return [];
+  }
+  
+};
+
+export const searchMovies = async (query) => {
+  try {
+    const response = await fetch(`http://localhost:3000/movies/search?query=${encodeURIComponent(query)}`);
+    
+    if (!response.ok) {
+      throw new Error('Search failed');
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Search error:', error);
+    throw error;
   }
 };

@@ -154,6 +154,26 @@ p {
   
 }
 
+.imdb-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius:10px ;
+  border: 1px solid rgba(255, 255, 255, 0.574);
+  background: rgba(0, 0, 0, 0.433);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.616) 100%);
+}
+
+.imdb-link {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.imdb-link:hover {
+  transform: scale(1.1);
+}
+
 button {
   all: unset;
 }

@@ -1,0 +1,19 @@
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .cookie-button {
+    background: #16ff1e;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+  }

@@ -4,26 +4,52 @@ import Cross from "./Assets/Cross.svg";
 import Arrow from "./Assets/Arrow.svg";
 import HeartHollow from "./Assets/HeartHollow.svg";
 
-//This function shows the popupwindows component for displaying the movie details.
-function PopupWindow({ movie, onClose, onAddToWatchlist }) {
+function PopupWindow({ movie, onClose }) {
   if (!movie) return null;
 
-  //In here I determine the type of content (TV Series or Capitalize first letter of the type data.)
-  const type =
-    movie.type === "tv_series"
-      ? "TV Series"
-      : movie.type.charAt(0).toUpperCase() + movie.type.slice(1);
+  // Safely handle type formatting
+  const type = movie.type 
+    ? movie.type === "tv_series" 
+      ? "TV Series" 
+      : movie.type.charAt(0).toUpperCase() + movie.type.slice(1)
+    : "Movie";
 
-  //This handler is for adding the movie to the watchlist and also it closes the popup after adding to watchlist, the popup gives you the opportunity to add more.
-  const handleAddToWatchlist = () => {
-    onAddToWatchlist(movie);
-    onClose();
-  };
-
-  //This function is for taking care of the title of the movie in the popupwindow that it should not exceeds a certain length of the characters.
+  // Updated truncateText with null checks
   const truncateText = (text, maxLength) => {
+    if (!text || typeof text !== 'string') return "";
     if (text.length <= maxLength) return text;
     return text.slice(0, maxLength) + "...";
+  };
+
+  const handleAddToWatchlist = async () => {
+    try {
+      console.log("Adding movie with ID:", movie.id || movie.imdbID);
+      
+      const response = await fetch('http://localhost:3000/watchlist', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({
+          imdbID: movie.id || movie.imdbID // Only send the identifier
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        if (errorData.error.includes('duplicate')) {
+          throw new Error("This movie is already in your watchlist!");
+        }
+        throw new Error(errorData.error || "Failed to add to watchlist");
+      }
+
+      onClose();
+      alert("Added to watchlist successfully!");
+      
+    } catch (error) {
+      console.error("Add to watchlist error:", error);
+      alert(error.message || "Failed to add to watchlist");
+    }
   };
 
   return (
@@ -32,9 +58,8 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
         <div className="up-popup">
           <div className="up-popup-row">
             <div className="popup-title">
-              {/* It is connected with the truncateText function and it stops when the characters reache 20. */}
-              <h2 className="popup-name" title={movie.name}>
-                {truncateText(movie.name, 20)}
+              <h2 className="popup-name" title={movie.name || movie.title || ""}>
+                {truncateText(movie.name || movie.title || "", 20)}
               </h2>
               <p className="popup-type">{type}</p>
             </div>
@@ -46,16 +71,15 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
           </div>
           <div className="up-popup-row">
             <div className="stream">
-              <p>Stream now</p>
+              <p>View on IMDb</p>
             </div>
-            {/* Here, I have connected to the NetFlix website */}
             <div className="arrow">
               <a
-                href={`https://www.netflix.com`}
+                href={`https://www.imdb.com/title/${movie.id || movie.imdbID}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={Arrow} alt="Go to Netflix" width="24" height="24" />
+                <img src={Arrow} alt="Go to IMDb" width="24" height="24" />
               </a>
             </div>
           </div>
@@ -68,7 +92,7 @@ function PopupWindow({ movie, onClose, onAddToWatchlist }) {
           <div className="watchlist-heart">
             <img
               src={HeartHollow}
-              alt="Favorite"
+              alt="Add to watchlist"
               width="24"
               height="24"
               style={{ cursor: "pointer" }}
